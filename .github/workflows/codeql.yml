@@ -26,8 +26,8 @@ jobs:
         languages: ${{matrix.language}}
     
     - name: Build C#
-        if matrix.language == 'csharp'
-        run:|
+      if: matrix.language == 'csharp'
+      run: |
           dotnet restore
           dotnet build --configuration Release
       
