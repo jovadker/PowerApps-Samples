@@ -23,10 +23,13 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: javascript-typescript, csharp
+        languages: ${{matrix.language}}
     
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+    - name: Build C#
+        if matrix.language == 'csharp'
+        run:|
+          dotnet restore
+          dotnet build --configuration Release
       
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
