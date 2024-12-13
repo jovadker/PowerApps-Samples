@@ -28,8 +28,9 @@ jobs:
     - name: Build C#
       if: matrix.language == 'csharp'
       run: |
-          dotnet restore
-          dotnet build --configuration Release
+          dotnet restore ./dataverse/DiscoveryService/DiscoveryService.sln
+          dotnet build ./dataverse/DiscoveryService/DiscoveryService.sln --configuration Release
+          
       
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
